@@ -1,3 +1,8 @@
+#Kayden Linner
+#04/11/2021
+#Module 5.2
+
+
 from pymongo import MongoClient
 
 #MongoDB Application Connection String
@@ -14,4 +19,4 @@ print("\n-- PyTech Collection List --")
 print(db.list_collection_names())
 
 #exit message
-input("End of program, press a key to quit...3")
+input("\nEnd of program, press a button to quit...")
