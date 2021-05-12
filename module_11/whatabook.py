@@ -101,7 +101,6 @@ def add_book(_cursor, _userID):
     query = ("SELECT book_id, book_name, author, details " 
             "FROM book " 
             "WHERE book_id NOT IN (SELECT book_id FROM wishlist WHERE user_id = {})".format(_userID))
-    print(query)
 
     _cursor.execute(query)
 
@@ -109,7 +108,7 @@ def add_book(_cursor, _userID):
 
     print("\n  -- Books Available For Wishlist --")
 
-    for book in books_to_add:
+    for book in books_available_to_add:
         print("  Book ID: {}\n  Book Name: {}\n".format(book[0], book[1]))
 
 def add_to_wishlist(_cursor, _userID, _book_id):
