@@ -26,10 +26,10 @@ def main_menu():
 
     try:
         userInput = int(input("\n  Enter in an option: "))
+
         return userInput
     except:
-        print("  Value wasn't valid, program is closing.")
-        sys.exit(0)
+        main_menu()
 
 def view_books(_cursor):
     _cursor.execute("SELECT book_id, book_name, author, details from book")
@@ -57,14 +57,12 @@ def try_user():
         userID = int(input("\n  Enter in your customer id: "))
 
         if userID < 0 or userID > 3:
-            print("\n  Customer doesn't exist. The program is closing.")
-            sys.exit(0)
+            try_user()
 
         return userID
     except:
         """catch error"""
-        print("\n  Invalid entry, program is closing.")
-        sys.exit(0)
+        main_menu()
 
 def account_menu():
     """main menu for account"""
@@ -76,10 +74,12 @@ def account_menu():
         print("  - 3. Main Menu")
         accountMenuInput = int(input("\n  Enter in an option: "))
 
-        return accountMenuInput
+        if (accountMenuInput == 1, 2, 3):
+            return accountMenuInput
+        else:
+            account_menu()
     except:
-        print("\n  Invalid entry, program closing.")
-        sys.exit(0)
+        account_menu()
 
 def wishlist(_cursor, _userID):
     """get a specific user's wishlist"""
@@ -157,6 +157,9 @@ try:
                     print("\n  Invalid entry, try again")
 
                 accountMenu = account_menu()
+
+                break
+                
 
         if userInput < 0 or userInput > 4:
             print("\n  Invalid entry, try again.")
